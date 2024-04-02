@@ -1,9 +1,9 @@
-<form>
+<form hx-post="/contacts" hx-swap="beforeend" hx-target="#contactList" hx-trigger="submit">
     <label for="name">Contact's Name:</label>
-    <input type="text" name="name" id="name" placeholder="Enter contact's name">
+    <input type="text" name="name" id="name">
     <br>
-    <label for="phone">Contact's Phone Number:</label>
-    <input type="tel" name="phone" id="phone" placeholder="Enter contact's phone number">
+    <label for="email">Contact's Email Number:</label>
+    <input type="email" name="email" id="email">
     <br>
     <button type="submit">Add Contact</button>
 </form>
