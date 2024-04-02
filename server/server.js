@@ -11,15 +11,34 @@ app.set("views", "public");
 
 app.use(BP.urlencoded({ extended: true }));
 
+let contacts = [];
+let lastId = 0;
+
 app.get("/", (req, res) => {
     logger.log(req);
-    res.render("index");
+    res.status(200).render("index", {contacts});
 });
 
 app.post("/contacts", (req, res) => {
     logger.log(req);
     let { name, email } = req.body;
-    res.render("templates/contact", { name, email });
+    let id = lastId++;
+    contacts.push({id, name, email});
+    res.status(201).render("templates/contact", { id, name, email });
+});
+
+app.get("/contacts", (req, res) => {
+    logger.log(req);
+    res.status(200).json(contacts);
+});
+
+app.delete("/contacts/:id", (req, res) => {
+    logger.log(req);
+
+    const id = req.params.id;
+    contacts = contacts.filter(contact => contact.id != id);
+
+    res.status(204).send("");
 });
 
 

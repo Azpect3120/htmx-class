@@ -1,6 +1,7 @@
-<p>
+<p hx-delete="/contacts/<%- id %>" hx-trigger="click">
     <span style="font-size: 24px; font-weight: bold; padding-inline: 10px;">
         <%= name %>
     </span>
     <%= email %>
+    (<%= id %>)
 </p>

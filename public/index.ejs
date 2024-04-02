@@ -9,6 +9,17 @@
 <body>
     <%- include("templates/form"); %>
     <hr>
-    <div id="contactList"></div>
+    <%- include("templates/contactList", {contacts: contacts}); %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            document.body.addEventListener('htmx:beforeSwap', e => {
+                if (e.detail.xhr.status === 204) {
+                    e.detail.shouldSwap = true;
+                    e.detail.isError = false;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
