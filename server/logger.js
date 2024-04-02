@@ -11,11 +11,12 @@ module.exports = class Logger {
     log(req) {
         let formatted = this.formatLog(req);
         console.log(formatted);
-        this.writeToLogFile(formatted); 
+        this.writeToLogFile(formatted + "\n"); 
     }
 
     formatLog(req) {
-        return req + "\n";
+        let formatted = `[${req.method}] ${req.url}`;
+        return formatted;
     }
 
     writeToLogFile(entry) {

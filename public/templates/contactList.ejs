@@ -1,0 +1,3 @@
+<% contacts.forEach((contact) => { %>
+    <%- include("contact", { name: contact.name, phone: contact.phone }); %>
+<% }); %>
