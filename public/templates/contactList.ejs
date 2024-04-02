@@ -1,5 +1,5 @@
 <div id="contactList">
     <% contacts.forEach((contact)=> { %>
-        <%- include("contact", { name: contact.name, email: contact.email }); %>
+        <%- include("contact", { id: contact.id, name: contact.name, email: contact.email }); %>
     <% }); %>
 </div>
