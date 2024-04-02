@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMX-Course: Home</title>
     <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
-</head>
-<body>
+  </head>
+  <body>
     <%- include("templates/form"); %>
     <hr>
     <%- include("templates/contactList", {contacts: contacts}); %>
 
     <script>
-        document.addEventListener("DOMContentLoaded", (event) => {
-            document.body.addEventListener('htmx:beforeSwap', e => {
-                if (e.detail.xhr.status === 204) {
-                    e.detail.shouldSwap = true;
-                    e.detail.isError = false;
-                }
-            });
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.body.addEventListener('htmx:beforeSwap', e => {
+          switch (e.detail.xhr.status) {
+            case 204:
+              e.detail.shouldSwap = true;
+              e.detail.isError = false;
+              break;
+            case 409: 
+              e.detail.shouldSwap = true;
+              e.detail.isError = false;
+              break;
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>
