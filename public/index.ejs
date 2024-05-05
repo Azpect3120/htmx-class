@@ -9,6 +9,11 @@
 <body>
     <%- include("templates/form"); %>
     <hr>
-    <div id="contactList"></div>
+    <!-- Fixed to display the contact on reload -->
+    <div id="contactList">
+      <% contacts.forEach((contact)=> { %>
+        <%- include("templates/contact", {id: contact.id, name: contact.name, email: contact.email}); %>
+      <% }); %>
+    </div>
 </body>
 </html>

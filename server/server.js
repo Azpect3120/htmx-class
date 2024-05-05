@@ -17,7 +17,7 @@ let lastId = 0;
 
 app.get("/", (req, res) => {
   logger.log(req);
-  res.render("index");
+  res.render("index", { contacts });
 });
 
 // This just creates the contact 
