@@ -1,0 +1,12 @@
+<form id="contact-<%= contact.id %>">
+  <input type="text" name="name" value="<%= contact.name %>">
+  <input type="email" name="email" value="<%= contact.email %>">
+  <button
+    hx-put="/contacts/<%= contact.id %>"
+    hx-swap="outerHTML"
+    hx-trigger="click"
+    hx-target="#contact-<%= contact.id %>"
+  >
+    Update Contact
+  </button>
+</form>
