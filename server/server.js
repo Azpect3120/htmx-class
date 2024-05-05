@@ -19,6 +19,9 @@ app.get("/", (req, res) => {
     res.status(200).render("index", {contacts});
 });
 
+// This just creates the contact 
+// Node the ID and contacts array is new
+// No database
 app.post("/contacts", (req, res) => {
     logger.log(req);
     let { name, email } = req.body;
@@ -27,11 +30,13 @@ app.post("/contacts", (req, res) => {
     res.status(201).render("templates/contact", { id, name, email });
 });
 
+// This is for seeing all the contacts in JSON format
 app.get("/contacts", (req, res) => {
     logger.log(req);
     res.status(200).json(contacts);
 });
 
+// This is for deleting a contact via its ID
 app.delete("/contacts/:id", (req, res) => {
     logger.log(req);
 
