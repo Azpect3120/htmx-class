@@ -9,7 +9,12 @@
   <body>
     <%- include("templates/form"); %>
     <hr>
-    <%- include("templates/contactList", {contacts: contacts}); %>
+    <!-- Fixed to display the contact on reload -->
+    <div id="contactList">
+      <% contacts.forEach((contact)=> { %>
+        <%- include("templates/contact", {id: contact.id, name: contact.name, email: contact.email}); %>
+      <% }); %>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
